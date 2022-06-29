@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages('Addition') {
          steps {
-         sh "myscripts/additioninput.sh 1 2"
+         sh "echo 'hello'"
          }
        }
     }
