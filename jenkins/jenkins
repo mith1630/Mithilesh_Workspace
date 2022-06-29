@@ -1,0 +1,10 @@
+pipeline {
+    agent any
+    stages('Build') {
+         steps {
+         sh('myscripts/additioninput.sh')
+         echo "$1"
+         echo "$2"
+         }
+       }
+    }
