@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Arithmetic Operation') {
+            steps {
+               sh "myscripts/logical.sh $num1 $num2"
+            }
+        }
+    }
+}
