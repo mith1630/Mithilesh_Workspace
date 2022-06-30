@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Addition') {
+            steps {
+                sh "/home/devops-2/Documents/bash/myscripts/Add.sh $a $b"
+            }
+        }
+        stage('Subtraction') {
+            steps {
+                sh "/home/devops-2/Documents/bash/myscripts/Sub.sh $a $b"
+            }
+        }
+        stage('Multiplication') {
+            steps {
+                sh "/home/devops-2/Documents/bash/myscripts/Prod.sh $a $b"
+            }
+        }
+        stage('Division') {
+            steps {
+                sh "/home/devops-2/Documents/bash/myscripts/Div.sh $a $b"
+            }
+        }
+    }
+}
