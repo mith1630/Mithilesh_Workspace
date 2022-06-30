@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Arithmetic Operation') {
             steps {
-               sh "myscripts/logical.sh $a $b $c"
+               sh "myscripts/logical.sh $a $b $op $c"
             }
         }
     }
