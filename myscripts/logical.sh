@@ -1,13 +1,15 @@
 #!/bin/bash
 
-
-
-sum=$(($1+$2))
-Multplication=$(($1*$2))
-Subtraction=$(($1-$2))
-Division=$(($1/$2))
-
-echo "Sum is : $sum"
-echo "Multplication is : $Multplication"
-echo "Subtraction is : $Subtraction"
-echo "Division is : $Division"
+echo "Enter the value of a and b"
+read a
+read b
+echo "Enter Operation"
+read op
+case $op in
++) c=`expr $a + $b` ;;
+-) c=`expr $a - $b` ;;
+/) c=`expr $a / $b` ;;
+\*) c=`expr $a \* $b` ;;
+*) echo "" ;;
+esac
+echo Result=$c
