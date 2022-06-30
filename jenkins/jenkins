@@ -1,8 +1,11 @@
 pipeline {
     agent any
-    stages('Addition') {
-         steps {
-         sh "echo 'hello'"
-         }
-       }
+
+    stages {
+        stage('Addition') {
+            steps {
+               sh "./test.sh $num1 $num2"
+            }
+        }
     }
+}
