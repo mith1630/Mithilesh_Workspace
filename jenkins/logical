@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage('Addition') {
             steps {
-                sh "myscripts/Add.sh $a $b"
+                sh "/home/devops-2/Documents/bash/myscripts/Add.sh $a $b"
             }
         }
         stage('Subtraction') {
             steps {
-                sh "myscripts/Sub.sh $a $b"
+                sh "/home/devops-2/Documents/bash/myscripts/Sub.sh $a $b"
             }
         }
         stage('Multiplication') {
             steps {
-                sh "myscripts/Prod.sh $a $b"
+                sh "/home/devops-2/Documents/bash/myscripts/Prod.sh $a $b"
             }
         }
         stage('Division') {
             steps {
-                sh "myscripts/Div.sh $a $b"
+                sh "/home/devops-2/Documents/bash/myscripts/Div.sh $a $b"
             }
         }
     }
