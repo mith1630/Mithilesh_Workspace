@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage('Addition') {
             steps {
-                sh "myscripts/Add.sh $a $b"
+                sh "myscripts/Add.sh $num1 $num2"
             }
         }
         stage('Subtraction') {
             steps {
-                sh "myscripts/Sub.sh $a $b"
+                sh "myscripts/Sub.sh $num1 $num2"
             }
         }
         stage('Multiplication') {
             steps {
-                sh "myscripts/Prod.sh $a $b"
+                sh "myscripts/Prod.sh $num1 $num2"
             }
         }
         stage('Division') {
             steps {
-                sh "myscripts/Div.sh $a $b"
+                sh "myscripts/Div.sh $num1 $num2"
             }
         }
     }
