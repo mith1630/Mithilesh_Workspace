@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Wait for the User Input') {
+            steps {
+                script {
+                     def USER_INPUT = input(
+                     message: 'Input Required',
+                     parameters: [
+                            [$class: 'ChoiceParameterDefinition',
+                             choices: ['no','yes'].join('\n'),
+                             name: 'input',
+                             description: 'Select any one']
+                    ])
+
+            echo "The answer is: ${USER_INPUT}"
+
+                 if( "${USER_INPUT}" == "yes"){
+                     echo "Hello Sir"
+                    }    
+                 else {
+                 echo "Nothing to be proceed"
+                     }
+                 }
+            }
+        }
+    }
+}
+
+
+
+
