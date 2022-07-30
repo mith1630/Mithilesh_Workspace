@@ -1,0 +1,10 @@
+---
+- name: Install Java using Ansible
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - openjdk-8-jdk
+
+     

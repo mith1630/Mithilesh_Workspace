@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -ex
+
+stack_identifier=nxdev-5301
+
+for bucket in $(aws s3api list-buckets | jq .Buckets[].Name -r); do
+  tags=$(aws s3api get-bucket-tagging --bucket "${bucket}" 2>/dev/null)
+  bucket_name=$(aws s3api get-bucket-tagging --filters "Name=$bucket,Values=running" --bucket "${bucket}" --query "TagSet[?Key=='stack-identifier' && Value=='${stack_identifier}'] && TagSet[?Key=='role' && Value=='nuxeo.bucket.backup'] && TagSet[?Key=='Name'].Value" --output text)
+  echo "bucket_name - ${bucket_name}"
+done
+
+
+--filters "Name=$bucket,Values=running"
+##########################################################################################
+
+
+eval "$(jq -r '@sh "STACK_IDENTIFIER=\(.stack_identifier) BUCKET_NAME=\(.bucket_name)"')"
+bucket_name=$(aws resourcegroupstaggingapi get-resources --resource-type-filters s3:bucket \
+--tag-filters "Key=stack-identifier,Values=ncoint-5363" "Key=role,Values=nuxeo.bucket.logs" \
+--query "TagSet[?Key=='stack-identifier' && Value=='${stack_identifier}'] && TagSet[?Key=='role' && Value=='nuxeo.bucket.backup'] && TagSet[?Key=='Name'].Value" --output text)
+BACKUP_BUCKET_NAME="$bucket_name"
+jq -n --arg backup_bucket_name "$bucket_name" '{"name":$backup_bucket_name}'
+
+##################################################################################
+
+ bucket_name=$(aws s3api get-bucket-tagging --bucket "${bucket}" --query "TagSet[?Key=='stack-identifier' && Value=='${stack_identifier}'] && TagSet[?Key=='role' && Value=='nuxeo.bucket.backup'] && TagSet[?Key=='Name'].Value" --output text)
