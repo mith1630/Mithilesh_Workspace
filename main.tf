@@ -15,3 +15,4 @@ resource "aws_instance" "admin_frontend" {
             Name = var.name
     }
 }
+
